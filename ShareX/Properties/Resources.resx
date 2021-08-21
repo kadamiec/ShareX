@@ -1112,4 +1112,7 @@ Please run ShareX as administrator to change personal folder path.</value>
   <data name="InspectWindow_WindowStyles" xml:space="preserve">
     <value>Window styles</value>
   </data>
+  <data name="QuickTaskMenu_ShowMenu_Filename_Tooltip" xml:space="preserve">
+    <value>Filename/Job name</value>
+  </data>
 </root>

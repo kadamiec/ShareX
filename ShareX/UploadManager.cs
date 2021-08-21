@@ -341,7 +341,7 @@ namespace ShareX
             RunImageTask(imageInfo, taskSettings, skipQuickTaskMenu, skipAfterCaptureWindow);
         }
 
-        public static void RunImageTask(ImageInfo imageInfo, TaskSettings taskSettings, bool skipQuickTaskMenu = false, bool skipAfterCaptureWindow = false)
+        public static void RunImageTask(ImageInfo imageInfo, TaskSettings taskSettings, bool skipQuickTaskMenu = false, bool skipAfterCaptureWindow = false, string customFileName = null)
         {
             if (taskSettings == null) taskSettings = TaskSettings.GetDefaultTaskSettings();
 
@@ -355,24 +355,28 @@ namespace ShareX
                     {
                         if (taskInfo == null)
                         {
-                            RunImageTask(imageInfo, taskSettings, true);
+                            RunImageTask(imageInfo, taskSettings, true, false);
+                        }
+                        else if (taskInfo.NoOverride)
+                        {
+                            RunImageTask(imageInfo, taskSettings, true, false, taskInfo.customFileName);
                         }
                         else if (taskInfo.IsValid)
                         {
-                            taskSettings.AfterCaptureJob = taskInfo.AfterCaptureTasks;
-                            taskSettings.AfterUploadJob = taskInfo.AfterUploadTasks;
-                            RunImageTask(imageInfo, taskSettings, true);
+                                taskSettings.AfterCaptureJob = taskInfo.AfterCaptureTasks;
+                                taskSettings.AfterUploadJob = taskInfo.AfterUploadTasks;
+                            RunImageTask(imageInfo, taskSettings, true, false, taskInfo.customFileName);
                         }
                     };
 
-                    quickTaskMenu.ShowMenu();
+                    quickTaskMenu.ShowMenu(TaskHelpers.GetFilename(taskSettings, null, imageInfo));
 
                     return;
                 }
 
-                string customFileName = null;
+                
 
-                if (!skipAfterCaptureWindow && !TaskHelpers.ShowAfterCaptureForm(taskSettings, out customFileName, imageInfo))
+                if (!skipAfterCaptureWindow && !TaskHelpers.ShowAfterCaptureForm(taskSettings, out customFileName, imageInfo, null, customFileName))
                 {
                     return;
                 }

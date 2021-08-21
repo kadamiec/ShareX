@@ -428,9 +428,9 @@ namespace ShareX
             return filename;
         }
 
-        public static bool ShowAfterCaptureForm(TaskSettings taskSettings, out string fileName, ImageInfo imageInfo = null, string filePath = null)
+        public static bool ShowAfterCaptureForm(TaskSettings taskSettings, out string fileName, ImageInfo imageInfo = null, string filePath = null, string currentFileName = null)
         {
-            fileName = null;
+            fileName = currentFileName;
 
             if (taskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.ShowAfterCaptureWindow))
             {
@@ -556,6 +556,8 @@ namespace ShareX
             return HandleExistsFile(filepath, taskSettings);
         }
 
+
+        // TODO: Implement here the logic to rename the file before saving
         public static string HandleExistsFile(string filepath, TaskSettings taskSettings)
         {
             if (File.Exists(filepath))

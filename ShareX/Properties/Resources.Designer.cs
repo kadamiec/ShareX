@@ -1062,7 +1062,7 @@ namespace ShareX.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -2395,6 +2395,15 @@ namespace ShareX.Properties {
         public static string QuickTaskMenu_ShowMenu_Edit_this_menu___ {
             get {
                 return ResourceManager.GetString("QuickTaskMenu_ShowMenu_Edit_this_menu___", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filename/Job name.
+        /// </summary>
+        public static string QuickTaskMenu_ShowMenu_Filename_Tooltip {
+            get {
+                return ResourceManager.GetString("QuickTaskMenu_ShowMenu_Filename_Tooltip", resourceCulture);
             }
         }
         
