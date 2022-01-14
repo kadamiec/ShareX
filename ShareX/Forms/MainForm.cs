@@ -23,6 +23,7 @@
 
 #endregion License Information (GPL v3)
 
+using Microsoft.VisualBasic;    // improve the renaming to not rely on inputbox
 using ShareX.HelpersLib;
 using ShareX.ImageEffectsLib;
 using ShareX.Properties;
@@ -715,6 +716,7 @@ namespace ShareX
                     tsmiPinSelectedFile.Visible = uim.SelectedItem.IsImageFile;
                     UpdateActionsMenu(uim.SelectedItem.Info.FilePath);
                     tsmiDeleteSelectedItem.Visible = true;
+                    tsmiRenameSelectedFile.Visible = uim.SelectedItem.IsFileExist && uim.SelectedItems.Length == 1;
                     tsmiDeleteSelectedFile.Visible = uim.SelectedItem.IsFileExist;
                     tsmiShortenSelectedURL.Visible = uim.SelectedItem.IsURLExist;
                     tsmiShareSelectedURL.Visible = uim.SelectedItem.IsURLExist;
@@ -1486,6 +1488,9 @@ namespace ShareX
                     break;
                 case Keys.Delete:
                     RemoveSelectedItems();
+                    break;
+                case Keys.F2:
+                    RenameSelectedItem();
                     break;
                 case Keys.Shift | Keys.Delete:
                     uim.DeleteFiles();
@@ -2356,6 +2361,11 @@ namespace ShareX
         private void tsmiDeleteSelectedItem_Click(object sender, EventArgs e)
         {
             RemoveSelectedItems();
+        }
+
+        private void tsmiRenameSelectedFile_Click(object sender, EventArgs e)
+        {
+            RenameSelectedItem();
         }
 
         private void tsmiDeleteSelectedFile_Click(object sender, EventArgs e)
