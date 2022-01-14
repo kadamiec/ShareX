@@ -80,6 +80,16 @@ namespace ShareX
             }
         }
 
+        public static void RenameFile(WorkerTask task, string newFilePath)
+        {
+            TaskInfo newTaskInfo = task.Info;
+            String oldFilePath = task.Info.FilePath;
+
+            newTaskInfo.FilePath = newFilePath;
+            RecentManager.RenameFile(oldFilePath, newFilePath);
+            TaskManager.UpdateTaskInfo(task, newTaskInfo);
+        }
+
         public static void Remove(WorkerTask task)
         {
             if (task != null)
@@ -127,6 +137,26 @@ namespace ShareX
             {
                 if (task != null) task.Stop();
             }
+        }
+
+        public static void UpdateTaskInfo(WorkerTask task, TaskInfo newTaskInfo)
+        {
+            if (String.IsNullOrEmpty(newTaskInfo.FilePath)) return;
+
+            ListViewItem lvi = TaskListView.FindItem(task);
+
+            if (lvi != null)
+            {
+                lvi.Text = newTaskInfo.FileName;
+                lvi.Tag = task;
+                lvi.SubItems[6].Text = newTaskInfo.FilePath;
+            }
+
+            HistoryItem historyItem = task.Info.GetHistoryItem();
+            historyItem.FilePath = newTaskInfo.FilePath;
+            historyItem.FileName = newTaskInfo.FileName;
+            historyItem.Type = "Image";
+            AppendHistoryItemAsync(historyItem);
         }
 
         public static void UpdateMainFormTip()
