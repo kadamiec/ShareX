@@ -32,6 +32,8 @@ namespace ShareX
     public class QuickTaskInfo
     {
         public string Name { get; set; }
+        public string CustomFileName { get; set; }
+        public bool NoOverride { get; set; }
         public AfterCaptureTasks AfterCaptureTasks { get; set; }
         public AfterUploadTasks AfterUploadTasks { get; set; }
 

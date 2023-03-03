@@ -1119,4 +1119,10 @@ Middle click to close</value>
   <data name="FFmpegDoesNotExistAtTheFollowingPath" xml:space="preserve">
     <value>FFmpeg does not exist at the following path:</value>
   </data>
+  <data name="QuickTaskMenu_ShowMenu_Filename_Tooltip" xml:space="preserve">
+    <value>Filename/Job name</value>
+  </data>
+  <data name="QuickTaskMenu_ShowMenu_Filename_Tooltip" xml:space="preserve">
+    <value>Filename/Job name</value>
+  </data>
 </root>

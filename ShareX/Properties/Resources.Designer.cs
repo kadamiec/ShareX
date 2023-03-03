@@ -2405,6 +2405,15 @@ namespace ShareX.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filename/Job name.
+        /// </summary>
+        public static string QuickTaskMenu_ShowMenu_Filename_Tooltip {
+            get {
+                return ResourceManager.GetString("QuickTaskMenu_ShowMenu_Filename_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset all quick tasks to defaults?.
         /// </summary>
         public static string QuickTaskMenuEditorForm_Reset_all_quick_tasks_to_defaults_Confirmation {
