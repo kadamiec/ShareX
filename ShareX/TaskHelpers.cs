@@ -517,9 +517,9 @@ namespace ShareX
             return FileHelpers.GetAbsolutePath(screenshotsFolder);
         }
 
-        public static bool ShowAfterCaptureForm(TaskSettings taskSettings, out string fileName, TaskMetadata metadata = null, string filePath = null)
+        public static bool ShowAfterCaptureForm(TaskSettings taskSettings, out string fileName, TaskMetadata metadata = null, string filePath = null, string currentFileName = null)
         {
-            fileName = null;
+            fileName = currentFileName;
 
             if (taskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.ShowAfterCaptureWindow))
             {
